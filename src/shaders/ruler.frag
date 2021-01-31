@@ -22,7 +22,7 @@ bool isTick(float x, float y) {
     bool major = !(modI(x, (uScale*3.0)) > 0.0001) && y > 3.0 && y <= 9.0;
     // 3px
     bool minor = !(modI(x, uScale) > 0.0001) && y > 0.0 && y >= 5.0 && y <= 7.0;
-    return y < 0.0001 || (not && (major || minor));
+    return  (not && (major || minor));
 }
 
 void main() {
@@ -30,7 +30,7 @@ void main() {
     float x = floor(vTextureCoord.x);
     float y = floor(vTextureCoord.y);
     vec4 background = (x >= uOffset && x < uWidth + uOffset) ? white : lightGrey;
-    bool drawTicks = (x >= uOffset && x < uWidth + uOffset);
-    vec4 grey = isTick(x - uOffset - uMargin, y) && drawTicks ? darkGrey : background;
+    bool drawTicks = y < 0.0001 || (x >= uOffset && x < uWidth + uOffset);
+    vec4 grey = y < 0.0001 || isTick(x - uOffset - uMargin, y) && drawTicks ? darkGrey : background;
     gl_FragColor = grey;
 }
