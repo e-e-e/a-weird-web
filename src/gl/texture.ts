@@ -1,6 +1,6 @@
 // TODO - figure out simple way of sharing without making global
 let framebuffer: WebGLFramebuffer | null = null
-let renderbuffer: WebGLRenderbuffer | null = null
+const renderbuffer: WebGLRenderbuffer | null = null
 
 export class Texture {
   readonly id: WebGLTexture | null
@@ -37,7 +37,7 @@ export class Texture {
       gl.TEXTURE_WRAP_T,
       options.wrap || options.wrapT || gl.REPEAT
     )
-    if (options.data instanceof Image) {
+    if (options.data instanceof Image || options.data instanceof HTMLCanvasElement) {
       gl.texImage2D(
         gl.TEXTURE_2D,
         0,

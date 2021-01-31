@@ -20,7 +20,7 @@ export class GL {
   readonly gl: WebGLRenderingContext
   private _onUpdate: ((time: number) => void) | null = null
   private _onDraw: (() => void) | null = null
-  private _time: number = 0
+  private _time = 0
   private _intervalId: number | null = null
   running = false
 

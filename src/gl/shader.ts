@@ -114,7 +114,7 @@ export class Shader {
   uniforms(uniforms: Record<string, number | Float32List | Int32List>) {
     const gl = this.gl
     gl.useProgram(this.program)
-    for (let name in uniforms) {
+    for (const name in uniforms) {
       const uniform = this._uniforms[name]
       if (!uniform) continue
       const location =
@@ -135,8 +135,8 @@ export class Shader {
     let length = 0
     let attribute = null
     for (attribute in vertexBuffers) {
-      var buffer = vertexBuffers[attribute]
-      var location =
+      const buffer = vertexBuffers[attribute]
+      const location =
         this._attributes[attribute] ||
         gl.getAttribLocation(this.program, attribute)
       if (location == -1 || !buffer.buffer) continue
