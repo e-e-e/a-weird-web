@@ -12,7 +12,7 @@ function createTextCanvas(limit: number) {
   if (ctx == null) {
     throw new Error("Could not get 2d context from canvas");
   }
-  ctx.fillStyle = "#000"; // This determines the text colour, it can take a hex value or rgba value (e.g. rgba(255,0,0,0.5))
+  ctx.fillStyle = "#fff"; // This determines the text colour, it can take a hex value or rgba value (e.g. rgba(255,0,0,0.5))
   ctx.textAlign = "center"; // This determines the alignment of text, e.g. left, center, right
   ctx.textBaseline = "middle"; // This determines the baseline of the text, e.g. top, middle, bottom
   ctx.font = "9px sans-serif"; // This determines the size of the text and the font family used
@@ -128,6 +128,7 @@ function createTextTexture(context: GL, width: number, height: number) {
       texture.bind(0);
       shader.draw(mesh, {
         uInputTexture: 0,
+        uColor: [60/255,64/255,67/255, 1], //189.0/255.0, 193.0/255.0, 198.0/255.0, 1.0],
       });
       state.verts = []
       state.cords = []
